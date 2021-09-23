@@ -1,6 +1,7 @@
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 
+// Component imports
 import Navbar from "./components/navbar/Navbar";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";

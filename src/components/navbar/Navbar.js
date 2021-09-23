@@ -2,9 +2,11 @@ import NavLinks from "./NavLinks";
 
 const Navbar = () => {
   return (
-    <div>
-      <NavLinks />
-    </div>
+    <>
+      <nav>
+        <NavLinks />
+      </nav>
+    </>
   );
 };
 
