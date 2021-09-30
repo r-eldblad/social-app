@@ -1,26 +1,54 @@
 import { Link } from "react-router-dom";
+import { LoginContext } from "../../contexts/LoginContext";
+import { useContext } from "react";
 
 const NavLinks = () => {
+	const { token, setToken } = useContext(LoginContext);
+	const handleLogout = () => {
+		setToken(null);
+	};
 	return (
 		<header>
 			<div className="px-5 py-5 text-white flex justify-between bg-blue-900">
 				<h1 className="text-xl font-bold">Social App</h1>
 				<ul>
-					<Link
-						className="hover:bg-blue-800 text-white font-bold py-5 px-5 mx-3 rounded uppercase"
-						to="/profile">
-						Profile
-					</Link>
-					<Link
-						className="hover:bg-blue-800 text-white font-bold py-5 px-5 mx-3 rounded uppercase"
-						to="/login">
-						Login
-					</Link>
-					<Link
-						className="hover:bg-blue-800 text-white font-bold py-5 px-5 rounded uppercase"
-						to="/register">
-						Register
-					</Link>
+					{token ? (
+						<Link
+							className="hover:bg-blue-800 text-white font-bold py-5 px-5 mx-3 rounded uppercase"
+							to="/profile">
+							Profile
+						</Link>
+					) : (
+						<Link></Link>
+					)}
+					{!token ? (
+						<Link
+							className="hover:bg-blue-800 text-white font-bold py-5 px-5 mx-3 rounded uppercase"
+							to="/login">
+							Login
+						</Link>
+					) : (
+						<Link></Link>
+					)}
+					{!token ? (
+						<Link
+							className="hover:bg-blue-800 text-white font-bold py-5 px-5 rounded uppercase"
+							to="/register">
+							Register
+						</Link>
+					) : (
+						<Link></Link>
+					)}
+					{token ? (
+						<Link
+							className="hover:bg-blue-800 text-white font-bold py-5 px-5 rounded uppercase"
+							onClick={handleLogout}
+							to="/login">
+							Logout
+						</Link>
+					) : (
+						<Link></Link>
+					)}
 				</ul>
 			</div>
 		</header>

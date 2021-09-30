@@ -1,11 +1,13 @@
 import { useState, useContext } from "react";
 import { LoginContext } from "../../contexts/LoginContext";
 import axios from "axios";
+import { useHistory } from "react-router";
 
 const LoginPage = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { setToken } = useContext(LoginContext);
+	const history = useHistory();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -14,8 +16,8 @@ const LoginPage = () => {
 		axios
 			.post("http://localhost:8000/api/user/login", user)
 			.then((response) => {
-				console.log(response);
 				setToken(response.data);
+				history.push("/profile");
 			})
 			.catch((error) => {
 				console.log(error);

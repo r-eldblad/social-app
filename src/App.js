@@ -14,10 +14,9 @@ function App() {
 	const [token, setToken] = useState(null);
 	return (
 		<div>
-			<Navbar />
-
-			<Switch>
-				<LoginContext.Provider value={{ token, setToken }}>
+			<LoginContext.Provider value={{ token, setToken }}>
+				<Navbar />
+				<Switch>
 					<Route path="/profile">
 						<ProfilePage />
 					</Route>
@@ -27,8 +26,8 @@ function App() {
 					<Route path="/register">
 						<RegisterPage />
 					</Route>
-				</LoginContext.Provider>
-			</Switch>
+				</Switch>
+			</LoginContext.Provider>
 		</div>
 	);
 }
