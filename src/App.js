@@ -9,24 +9,28 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 // Context import(s)
 import { LoginContext } from "./contexts/LoginContext";
+import { UserContext } from "./contexts/UserContext";
 
 function App() {
 	const [token, setToken] = useState(null);
+	const [user, setUser] = useState();
 	return (
 		<div>
 			<LoginContext.Provider value={{ token, setToken }}>
-				<Navbar />
-				<Switch>
-					<Route path="/profile">
-						<ProfilePage />
-					</Route>
-					<Route path="/login">
-						<LoginPage />
-					</Route>
-					<Route path="/register">
-						<RegisterPage />
-					</Route>
-				</Switch>
+				<UserContext.Provider value={{ user, setUser }}>
+					<Navbar />
+					<Switch>
+						<Route path="/profile">
+							<ProfilePage />
+						</Route>
+						<Route path="/login">
+							<LoginPage />
+						</Route>
+						<Route path="/register">
+							<RegisterPage />
+						</Route>
+					</Switch>
+				</UserContext.Provider>
 			</LoginContext.Provider>
 		</div>
 	);

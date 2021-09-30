@@ -10,7 +10,9 @@ const NavLinks = () => {
 	return (
 		<header>
 			<div className="px-5 py-5 text-white flex justify-between bg-blue-900">
-				<h1 className="text-xl font-bold">Social App</h1>
+				<Link to="/">
+					<h1 className="text-xl font-bold">Social App</h1>
+				</Link>
 				<ul>
 					{token ? (
 						<Link
@@ -18,27 +20,21 @@ const NavLinks = () => {
 							to="/profile">
 							Profile
 						</Link>
-					) : (
-						<Link></Link>
-					)}
+					) : null}
 					{!token ? (
 						<Link
 							className="hover:bg-blue-800 text-white font-bold py-5 px-5 mx-3 rounded uppercase"
 							to="/login">
 							Login
 						</Link>
-					) : (
-						<Link></Link>
-					)}
+					) : null}
 					{!token ? (
 						<Link
 							className="hover:bg-blue-800 text-white font-bold py-5 px-5 rounded uppercase"
 							to="/register">
 							Register
 						</Link>
-					) : (
-						<Link></Link>
-					)}
+					) : null}
 					{token ? (
 						<Link
 							className="hover:bg-blue-800 text-white font-bold py-5 px-5 rounded uppercase"
@@ -46,9 +42,7 @@ const NavLinks = () => {
 							to="/login">
 							Logout
 						</Link>
-					) : (
-						<Link></Link>
-					)}
+					) : null}
 				</ul>
 			</div>
 		</header>
