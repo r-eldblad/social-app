@@ -9,7 +9,7 @@ const ProfilePage = () => {
 
 	useEffect(() => {
 		axios
-			.get("http://localhost:8000/api/user/profile", {
+			.get("http://localhost:8000/api/users", {
 				headers: { "auth-token": token },
 			})
 			.then((response) => {
@@ -17,13 +17,19 @@ const ProfilePage = () => {
 			});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
-	return (
-		<div>
-			<div className="text-4xl my-7 text-center">
-				<h1>{user.name}</h1>
+
+	console.log(user);
+
+	if (user) {
+		return (
+			<div>
+				<h1 className="text-4xl my-7 text-center font-bold">Profile</h1>
+				<h2 className="text-3xl my-7 text-center">{user.name}</h2>
 			</div>
-		</div>
-	);
+		);
+	} else {
+		return <div></div>;
+	}
 };
 
 export default ProfilePage;

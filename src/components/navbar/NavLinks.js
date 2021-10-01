@@ -21,6 +21,13 @@ const NavLinks = () => {
 							Profile
 						</Link>
 					) : null}
+					{token ? (
+						<Link
+							className="hover:bg-blue-800 text-white font-bold py-5 px-5 mx-3 rounded uppercase"
+							to="/users">
+							Users List
+						</Link>
+					) : null}
 					{!token ? (
 						<Link
 							className="hover:bg-blue-800 text-white font-bold py-5 px-5 mx-3 rounded uppercase"

@@ -13,7 +13,7 @@ const RegisterPage = () => {
 		const user = { name, email, password };
 		console.log(user);
 		axios
-			.post("http://localhost:8000/api/user/register", user)
+			.post("http://localhost:8000/api/auth/register", user)
 			.then((response) => {
 				console.log(response);
 				history.push("/");
@@ -26,7 +26,7 @@ const RegisterPage = () => {
 	return (
 		<div>
 			<div>
-				<h1 className="text-4xl my-7 text-center">Register</h1>
+				<h1 className="text-4xl my-7 text-center font-bold">Register</h1>
 				<form
 					className="container mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
 					onSubmit={handleSubmit}>

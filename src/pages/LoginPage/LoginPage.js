@@ -14,7 +14,7 @@ const LoginPage = () => {
 		const user = { email, password };
 		console.log(user);
 		axios
-			.post("http://localhost:8000/api/user/login", user)
+			.post("http://localhost:8000/api/auth/login", user)
 			.then((response) => {
 				setToken(response.data);
 				history.push("/profile");
@@ -26,7 +26,7 @@ const LoginPage = () => {
 
 	return (
 		<div>
-			<h1 className="text-4xl my-7 text-center">Login</h1>
+			<h1 className="text-4xl my-7 text-center font-bold">Login</h1>
 			<form
 				className="container mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
 				onSubmit={handleSubmit}>
