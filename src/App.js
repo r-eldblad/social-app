@@ -16,7 +16,7 @@ import { UserListContext } from "./contexts/UserListContext";
 function App() {
 	const [token, setToken] = useState(null);
 	const [user, setUser] = useState();
-	const [userList, setUserList] = useState();
+	const [userList, setUserList] = useState([]);
 	return (
 		<div>
 			<LoginContext.Provider value={{ token, setToken }}>
