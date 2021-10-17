@@ -16,7 +16,7 @@ const RegisterPage = () => {
       .post("http://localhost:8000/api/auth/register", user)
       .then((response) => {
         console.log(response);
-        history.push("/");
+        history.push("/welcome");
       })
       .catch((error) => {
         console.log(error);
