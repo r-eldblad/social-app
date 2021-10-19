@@ -17,15 +17,18 @@ const ProfilePage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/users", {
+      .get("https://social-app-backend-api.herokuapp.com/api/users", {
         headers: { "auth-token": token },
       })
       .then((response) => {
         setCurrentUser(response.data);
         return axios
-          .get(`http://localhost:8000/api/posts/${response.data._id}`, {
-            headers: { "auth-token": token },
-          })
+          .get(
+            `https://social-app-backend-api.herokuapp.com/api/posts/${response.data._id}`,
+            {
+              headers: { "auth-token": token },
+            }
+          )
           .then((response) => {
             setPosts(response);
           });
@@ -39,9 +42,12 @@ const ProfilePage = () => {
 
   const deletePost = (postId) => {
     axios
-      .delete(`http://localhost:8000/api/posts/delete/${postId}`, {
-        headers: { "auth-token": token },
-      })
+      .delete(
+        `https://social-app-backend-api.herokuapp.com/api/posts/delete/${postId}`,
+        {
+          headers: { "auth-token": token },
+        }
+      )
       .then((res) => {
         const del = posts.data.filter((post) => postId !== post._id);
         setPosts(del);

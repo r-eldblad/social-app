@@ -10,7 +10,7 @@ const UsersList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/users/list", {
+      .get("https://social-app-backend-api.herokuapp.com/api/users/list", {
         headers: { "auth-token": token },
       })
       .then((response) => {

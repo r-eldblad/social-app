@@ -16,15 +16,22 @@ const UsersPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/api/users/profile/${id}`, {
-        headers: { "auth-token": token },
-      })
+      .get(
+        `https://social-app-backend-api.herokuapp.com/api/users/profile/${id}`,
+        {
+          headers: { "auth-token": token },
+        }
+      )
       .then((response) => {
         setUser(response.data);
         return axios
-          .get("http://localhost:8000/api/posts/" + response.data._id, {
-            headers: { "auth-token": token },
-          })
+          .get(
+            "https://social-app-backend-api.herokuapp.com/api/posts/" +
+              response.data._id,
+            {
+              headers: { "auth-token": token },
+            }
+          )
           .then((response) => {
             setPosts(response);
           });
@@ -39,7 +46,7 @@ const UsersPage = () => {
     e.preventDefault();
 
     axios
-      .get("http://localhost:8000/api/users", {
+      .get("https://social-app-backend-api.herokuapp.com/api/users", {
         headers: { "auth-token": token },
       })
       .then((response) => {
@@ -57,7 +64,10 @@ const UsersPage = () => {
 
     console.log(user);
     axios
-      .post("http://localhost:8000/api/posts/create", post)
+      .post(
+        "https://social-app-backend-api.herokuapp.com/api/posts/create",
+        post
+      )
       .then((response) => {
         console.log(response);
       })
@@ -66,7 +76,7 @@ const UsersPage = () => {
       });
   };
 
-  if (user && posts.data) {
+  if (token && user && posts.data) {
     return (
       <div>
         <h1 className="text-4xl my-7 text-center font-bold">Profile</h1>

@@ -13,7 +13,10 @@ const RegisterPage = () => {
     const user = { name, email, password };
     console.log(user);
     axios
-      .post("http://localhost:8000/api/auth/register", user)
+      .post(
+        "https://social-app-backend-api.herokuapp.com/api/auth/register",
+        user
+      )
       .then((response) => {
         console.log(response);
         history.push("/welcome");

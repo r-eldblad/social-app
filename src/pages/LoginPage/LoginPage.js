@@ -14,7 +14,7 @@ const LoginPage = () => {
     const user = { email, password };
     console.log(user);
     axios
-      .post("http://localhost:8000/api/auth/login", user)
+      .post("https://social-app-backend-api.herokuapp.com/api/auth/login", user)
       .then((response) => {
         setToken(response.data);
         history.push("/profile");
